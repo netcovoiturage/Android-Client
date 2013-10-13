@@ -4,7 +4,7 @@ package ru.ododo.logic;
 class Settings {
 	public final static String VK_AUTH_URL="https://oauth.vk.com/authorize?";
 	//идентификатор приложения
-	public final static String VK_CLINT_ID="client_id= &";
+	public final static String VK_CLINT_ID="client_id=3931961&";
 	//редирект на сайт, для standalone приложений редирект равен заглушки
 	public final static String VK_REDIRECT_URL="edirect_uri=https://oauth.vk.com/blank.htm&";
 	//настройка доступа приложения

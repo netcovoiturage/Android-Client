@@ -27,7 +27,7 @@ public class SocialNetworkAuth extends Activity {
 		ENTRY_BY_=getIntent().getExtras().getString(NAME_OF_SOCIAL_NETWORK);
 		
 		//запускаем класс, который соедин€ет нас с соц.сетью
-		EnterBySocialNetwork.enterInSystem((WebView)findViewById(id.webBr_for_social), ENTRY_BY_);
+		//EnterBySocialNetwork.enterInSystem((WebView)findViewById(id.webBr_for_social), ENTRY_BY_);
 		}
 		
 

@@ -25,6 +25,7 @@ public class StartAndDestination extends Activity implements OnClickListener {
 		
 		btnOk.setOnClickListener(this);
 		btnAbort.setOnClickListener(this);
+		
 	}
 
 	@Override
