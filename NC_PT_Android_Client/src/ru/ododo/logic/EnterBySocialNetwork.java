@@ -12,10 +12,13 @@ import org.apache.http.params.BasicHttpParams;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
 public class EnterBySocialNetwork extends Activity{
+	
+	final static String MY_TAG="myTag";
 	
 	static String url;
 	static String SocialNetwork;
@@ -34,8 +37,10 @@ public class EnterBySocialNetwork extends Activity{
 	
 		tPref=getPreferences(MODE_PRIVATE);
 		String vk_token=tPref.getString(VK_PREF_TOKEN, "");
+		Log.d(MY_TAG, "token:"+vk_token);
 		if(vk_token.length()==0){
 			
+			Log.d(MY_TAG, "browser create");
 	        webview.setVerticalScrollBarEnabled(false);
 	        webview.setHorizontalScrollBarEnabled(false);
 	        webview.clearCache(true);
@@ -43,7 +48,8 @@ public class EnterBySocialNetwork extends Activity{
 	        		Settings.VK_DISPLAY+Settings.VK_RESPONSE_TYPE;
 	        webview.loadUrl(url);
 	        webview.setVisibility(View.VISIBLE);
-	        
+	        String JSONUrl=getJSON();
+	        Log.d(MY_TAG, "JSON:"+JSONUrl);
 	        
 		}
 		
