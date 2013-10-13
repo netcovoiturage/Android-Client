@@ -23,12 +23,13 @@
                     />
             </intent-filter>
         </activity>
-        <activity android:name="LoadOrCreateRoute"
+        <activity android:name="ru.ododo.activities.ListOfRoutes"
                   ></activity>
-        <activity android:name="NameOfNewRoute" android:theme="@android:style/Theme.Dialog">
+        <activity android:name="ru.ododo.activities.NameOfNewRoute" android:theme="@android:style/Theme.Dialog">
         </activity>
-        <activity android:name="StartAndDestination"></activity>
-        <activity android:name="ListOfRoutes"></activity>
+        <activity android:name="ru.ododo.activities.StartAndDestination"></activity>
+
+        <activity android:name="ru.ododo.activities.SocialNetworkAuth"></activity>
     </application>
 
 </manifest>

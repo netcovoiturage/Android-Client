@@ -15,6 +15,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	Button entryByVk;
 	Button entryByFb;
 	
+	//ключ для интента
+	private final static String NAME_OF_SOCIAL_NETWORK="ru.ododo.android.client.SOCIALNETWORK";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,13 +41,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Intent intent=new Intent(this, LoadOrCreateRoute.class);
+		Intent intent=new Intent(this, SocialNetworkAuth.class);
 		switch (v.getId()) {
 		case R.id.entryByFb:
+			intent.putExtra(NAME_OF_SOCIAL_NETWORK, "_FB");
 			startActivity(intent);
 			break;
 
 		case R.id.entryByVk:
+			intent.putExtra(NAME_OF_SOCIAL_NETWORK, "_VK");
 			startActivity(intent);
 			break;
 		}
