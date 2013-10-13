@@ -1,9 +1,12 @@
 package ru.ododo.activities;
 
 
+import ru.ododo.logic.EnterBySocialNetwork;
 import nc_project_team.nc_prototypeinterface.R;
+import nc_project_team.nc_prototypeinterface.R.id;
 import android.app.Activity;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 
 
@@ -22,6 +25,9 @@ public class SocialNetworkAuth extends Activity {
 		setContentView(R.layout.social_network_auth);
 		//название в виде префикса для соц.сети
 		ENTRY_BY_=getIntent().getExtras().getString(NAME_OF_SOCIAL_NETWORK);
+		
+		//запускаем класс, который соединяет нас с соц.сетью
+		EnterBySocialNetwork.enterInSystem((WebView)findViewById(id.webBr_for_social), ENTRY_BY_);
 		}
 		
 
