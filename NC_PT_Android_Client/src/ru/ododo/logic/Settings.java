@@ -1,7 +1,7 @@
 package ru.ododo.logic;
 
 //класс с константами
-class Settings {
+public class Settings {
 	public final static String VK_AUTH_URL="https://oauth.vk.com/authorize?";
 	//идентификатор приложения
 	public final static String VK_CLINT_ID="client_id=3931961&";
