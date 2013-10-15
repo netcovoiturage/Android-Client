@@ -41,7 +41,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Intent intent=new Intent(this, SocialNetworkAuth.class);
+		//Intent intent=new Intent(this, SocialNetworkAuth.class);
+		Intent intent=new Intent(this, StartAndDestination.class);
 		switch (v.getId()) {
 		case R.id.entryByFb:
 			intent.putExtra(NAME_OF_SOCIAL_NETWORK, "_FB");
