@@ -12,7 +12,7 @@ import android.webkit.WebView;
 
 
 public class SocialNetworkAuth extends Activity {
-	final static String MY_TAG="myTag";
+	
 	
 	static String url;
 	static String SocialNetwork;
@@ -25,7 +25,7 @@ public class SocialNetworkAuth extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setTitle("Быстрый вход");
+		setTitle("Enter by social network:");
 		setContentView(R.layout.social_network_auth);
 		
 		tPref=getPreferences(MODE_PRIVATE);

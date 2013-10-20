@@ -15,7 +15,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	Button entryByVk;
 	Button entryByFb;
 	
-	//ключ для интента
+	//key for intent
 	private final static String NAME_OF_SOCIAL_NETWORK="ru.ododo.android.client.SOCIALNETWORK";
 	
 	@Override

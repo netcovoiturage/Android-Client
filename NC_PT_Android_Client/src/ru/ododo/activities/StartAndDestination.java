@@ -1,18 +1,12 @@
 package ru.ododo.activities;
 
 
-import java.io.IOException;
-import java.util.List;
+
 
 import nc_project_team.nc_prototypeinterface.R;
 import nc_project_team.nc_prototypeinterface.R.id;
 import ru.ododo.logic.GPSTracker;
 import android.app.Activity;
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -58,7 +52,6 @@ public class StartAndDestination extends Activity implements OnClickListener {
                  
                  double latitude = gps.getLatitude();
                  double longitude = gps.getLongitude();
-
                  Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " 
 		                 + latitude + "\nLong: "+longitude, Toast.LENGTH_LONG).show();
                  }

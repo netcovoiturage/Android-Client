@@ -24,7 +24,7 @@ public class ListOfRoutes extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_of_routes);
-		setTitle("сохраненные маршруты");
+		setTitle("saved routes");
 		
 		btnOk=(Button)findViewById(id.btnChoose);
 		btnAbort=(Button)findViewById(id.btnAbortList);
@@ -55,7 +55,7 @@ public class ListOfRoutes extends Activity implements OnClickListener {
 			break;
 
 		case R.id.menuDelete:
-			//что-то делаем
+			//to do something
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -66,7 +66,7 @@ public class ListOfRoutes extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.btnChoose:
-			//что-то делаем
+			//to do something
 			break;
 		case R.id.btnAbortList:
 			this.finish();

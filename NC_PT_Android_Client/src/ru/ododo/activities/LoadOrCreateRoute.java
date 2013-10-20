@@ -33,7 +33,7 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 		Intent intent=null;
 		switch (v.getId()) {
 		case R.id.LoadRoute:
-			//переходим на список маршрутов
+			//go to list of routes
 			intent=new Intent(this,ListOfRoutes.class);
 			break;
 		case R.id.NewRoute:

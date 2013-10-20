@@ -37,7 +37,7 @@ public class NameOfNewRoute extends Activity implements OnClickListener{
 			break;
 
 		case R.id.okBtn:
-			//переход на другой activity
+			//go to another activity
 			Intent intent=new Intent(this,StartAndDestination.class);
 			startActivity(intent);
 			break;
