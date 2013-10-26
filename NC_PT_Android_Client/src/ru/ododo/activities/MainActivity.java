@@ -1,5 +1,6 @@
 package ru.ododo.activities;
 
+import ru.ododo.logic.Settings;
 import nc_project_team.nc_prototypeinterface.R;
 import nc_project_team.nc_prototypeinterface.R.id;
 import android.os.Bundle;
@@ -9,15 +10,17 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+
+
 	Button entryByVk;
 	Button entryByFb;
-	
-	//key for intent
-	private final static String NAME_OF_SOCIAL_NETWORK="ru.ododo.android.client.SOCIALNETWORK";
-	
+	Intent intent;
+
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		entryByFb.setOnClickListener(this);
 		entryByVk.setOnClickListener(this);	
+		
 	}
 
 	@Override
@@ -41,19 +45,32 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		//Intent intent=new Intent(this, SocialNetworkAuth.class);
-		Intent intent=new Intent(this, StartAndDestination.class);
+		intent=new Intent(this, SocialNetworkAuth.class);
+		//Intent intent=new Intent(this, StartAndDestination.class);
 		switch (v.getId()) {
 		case R.id.entryByFb:
-			intent.putExtra(NAME_OF_SOCIAL_NETWORK, "_FB");
-			startActivity(intent);
+			intent.putExtra(Settings.NAME_OF_SOCIAL_NETWORK, "_FB");
 			break;
 
 		case R.id.entryByVk:
-			intent.putExtra(NAME_OF_SOCIAL_NETWORK, "_VK");
-			startActivity(intent);
+			intent.putExtra(Settings.NAME_OF_SOCIAL_NETWORK, "_VK");
+			startActivityForResult(intent,1);
 			break;
 		}
 	}
-
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(data!=null){
+			int result=data.getIntExtra("get_id", Settings.STATUS_FAILED);
+			if(result==Settings.STATUS_FAILED){
+				Toast.makeText(this, "Error: check network", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Intent intent=new Intent(this, LoadOrCreateRoute.class);
+				startActivity(intent);
+			}
+		}
+	}
 }
