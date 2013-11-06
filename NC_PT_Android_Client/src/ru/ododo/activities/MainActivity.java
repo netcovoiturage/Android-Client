@@ -6,6 +6,7 @@ import nc_project_team.nc_prototypeinterface.R.id;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,16 +47,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		intent=new Intent(this, SocialNetworkAuth.class);
-		//Intent intent=new Intent(this, StartAndDestination.class);
-		switch (v.getId()) {
-		case R.id.entryByFb:
+		int id = v.getId();
+		if (id == R.id.entryByFb) {
 			intent.putExtra(Settings.NAME_OF_SOCIAL_NETWORK, "_FB");
-			break;
-
-		case R.id.entryByVk:
+			startActivityForResult(intent,1);
+		} else if (id == R.id.entryByVk) {
 			intent.putExtra(Settings.NAME_OF_SOCIAL_NETWORK, "_VK");
 			startActivityForResult(intent,1);
-			break;
 		}
 	}
 	@Override
@@ -70,7 +68,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			else{
 				Intent intent=new Intent(this, LoadOrCreateRoute.class);
 				startActivity(intent);
+				
 			}
+		}
+		else{
+			Log.d(Settings.MY_TAG, "data is null");
 		}
 	}
 }

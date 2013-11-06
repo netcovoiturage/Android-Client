@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -29,14 +28,7 @@ public class ListOfRoutes extends Activity implements OnClickListener {
 		btnOk=(Button)findViewById(id.btnChoose);
 		btnAbort=(Button)findViewById(id.btnAbortList);
 		
-		lvRoutes=(ListView)findViewById(id.lvOfRoutes);
-		lvRoutes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
-			R.array.routes, android.R.layout.simple_list_item_single_choice);
-		lvRoutes.setAdapter(adapter);
-		
-		btnOk.setOnClickListener(this);
-		btnAbort.setOnClickListener(this);
+
 	}
 
 	@Override
@@ -48,29 +40,21 @@ public class ListOfRoutes extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.menuEdit:
+		int itemId = item.getItemId();
+		if (itemId == R.id.menuEdit) {
 			Intent intent=new Intent(this, StartAndDestination.class);
 			startActivity(intent);
-			break;
-
-		case R.id.menuDelete:
-			//to do something
-			break;
+		} else if (itemId == R.id.menuDelete) {
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.btnChoose:
-			//to do something
-			break;
-		case R.id.btnAbortList:
+		int id = v.getId();
+		if (id == R.id.btnChoose) {
+		} else if (id == R.id.btnAbortList) {
 			this.finish();
-			break;
 		}
 	}
 

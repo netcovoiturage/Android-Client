@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class LoadOrCreateRoute extends Activity implements OnClickListener {
+public class CopyOfLoadOrCreateRoute extends Activity implements OnClickListener {
 
 	Button btnLoadRoute;
 	Button btnNewRoute;

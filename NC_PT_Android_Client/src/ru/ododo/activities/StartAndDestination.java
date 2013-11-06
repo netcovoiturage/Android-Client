@@ -35,7 +35,6 @@ public class StartAndDestination extends Activity implements OnClickListener {
 		btnGetCord=(Button)findViewById(id.btnMyCord);
 		
 		etStart=(EditText)findViewById(id.etStart);
-		
 		btnOk.setOnClickListener(this);
 		btnAbort.setOnClickListener(this);
 	    btnGetCord.setOnClickListener(this);
@@ -44,11 +43,10 @@ public class StartAndDestination extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.btnMyCord:
+		int id = v.getId();
+		if (id == R.id.btnMyCord) {
 			GPSTracker gps= new GPSTracker(this);
-			 if(gps.canGetLocation()){
+			if(gps.canGetLocation()){
                  
                  double latitude = gps.getLatitude();
                  double longitude = gps.getLongitude();
@@ -61,10 +59,7 @@ public class StartAndDestination extends Activity implements OnClickListener {
                  // Ask user to enable GPS/network in settings
                  gps.showSettingsAlert();
              }
-			break;
-
-		default:
-			break;
+		} else {
 		}
 	}
 }

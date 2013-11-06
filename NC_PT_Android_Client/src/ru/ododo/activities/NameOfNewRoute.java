@@ -30,17 +30,13 @@ public class NameOfNewRoute extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.abortBtn:
+		int id = v.getId();
+		if (id == R.id.abortBtn) {
 			this.finish();
-			break;
-
-		case R.id.okBtn:
+		} else if (id == R.id.okBtn) {
 			//go to another activity
 			Intent intent=new Intent(this,StartAndDestination.class);
 			startActivity(intent);
-			break;
 		}
 	}
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="app_id">213931805444840</string>
     <string name="app_name">NC_PrototypeInterface</string>
     <string name="action_settings">Settings</string>
     
@@ -10,7 +10,6 @@
     <string name="entry_by_fb">facebook</string>
     <string name="load_route">save routes</string>
     <string name="new_route">create route</string>
-    <string name="name_routes">load or create route</string>
     <string name="name_of_new_route">the name of new route:</string>
 	<string name="ok">OK</string>
 	<string name="abort">abort</string>
@@ -21,9 +20,6 @@
 	<string name="rb_user_driver">driver</string>
 	<string name="menu_edit_list">edit\nroute</string>
 	<string name="menu_delete_list">delete\nroute</string>
-	<string-array name="routes">
-	    <item >работа</item>
-	    <item >универ</item>
-	    <item >магазин</item>
-	</string-array>
+	<string name="loading">loading</string>
+	<string name="error">error</string>
 </resources>

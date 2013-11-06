@@ -8,12 +8,12 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.webkit.WebView;
 
-public class GetUsetId extends AsyncTask<String, Void, Void> {
+public class GetUsetId extends AsyncTask<Void, Void, String> {
 
 	WebView webview;
 	ProgressDialog pb;
 	String userId;
-	SocialNetworkAuth act;
+	String urlWithToken;
 	
 	@Override
 	protected void onPreExecute() {
@@ -22,34 +22,25 @@ public class GetUsetId extends AsyncTask<String, Void, Void> {
 		webview.setVisibility(WebView.INVISIBLE);
 		pb.setMessage("Please wait");
 		pb.show();
-		
 	}
 
 	@Override
-	protected Void doInBackground(String... url) {
+	protected String doInBackground(Void... params) {
 		// TODO Auto-generated method stub
-		if(url[0].contains("access_token")){
-			userId=ParsingObject.getVkUserId(url[0]);
-			act.saveUserId(userId);
-		}
-		else{
-		}
-		return null;
+		userId=ParsingObject.getVkUserId(SocialNetworkAuth.getUrlWithAccessToken());
+		return userId;
 	}
-
-	
 	@Override
-	protected void onPostExecute(Void result) {
+	protected void onPostExecute(String result) {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
 		pb.cancel();
-		act.finishSocialNetworkAuth();
 	}
 	
-	public GetUsetId(WebView webview,ProgressDialog pb,SocialNetworkAuth a){
-		this.pb=pb;
-		this.webview=webview;
-		this.act=a;
+	public GetUsetId(){
+		this.pb=SocialNetworkAuth.getPb();
+		this.webview=SocialNetworkAuth.getWebview();
+		this.urlWithToken=SocialNetworkAuth.getUrlWithAccessToken();
 	}
 
 }
