@@ -6,8 +6,7 @@
     
     <string name="name_reg_activity">Registration</string>
     <string name="welcome_tv">Enter by:</string>
-    <string name="entry_by_vk">vkontakte</string>
-    <string name="entry_by_fb">facebook</string>
+    <string name="entry_by_vk">Log in with VK</string>
     <string name="load_route">save routes</string>
     <string name="new_route">create route</string>
     <string name="name_of_new_route">the name of new route:</string>

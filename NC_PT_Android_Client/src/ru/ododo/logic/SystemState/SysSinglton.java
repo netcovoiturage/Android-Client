@@ -1,7 +1,5 @@
 package ru.ododo.logic.SystemState;
 
-import android.util.Log;
-import ru.ododo.logic.Settings;
 import ru.ododo.logic.SocNetAbstractFactory.AbstractFactory;
 public class SysSinglton {
 	
@@ -15,13 +13,11 @@ public class SysSinglton {
 	}
 	static void initSinglton(){
 		if(singlton==null){
-			Log.d(Settings.MY_TAG,"initSinglton");
 			singlton=new SysSinglton();
 		}
 	}
 	
 	public static SysSinglton getInstance(){
-		Log.d(Settings.MY_TAG,"getInstance");
 		return singlton;
 	}
 	

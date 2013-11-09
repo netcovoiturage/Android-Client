@@ -1,19 +1,9 @@
 package ru.ododo.activities;
 
-
-
-
-
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.model.GraphUser;
-
 import nc_project_team.nc_prototypeinterface.R;
 import nc_project_team.nc_prototypeinterface.R.id;
 import ru.ododo.logic.Settings;
-import ru.ododo.logic.SocNetAbstractFactory.FBConnect;
+import ru.ododo.logic.SocNetAbstractFactory.FB;
 import ru.ododo.logic.SocNetAbstractFactory.VK;
 import ru.ododo.logic.SystemState.SysSinglton;
 import ru.ododo.logic.WebTask.GetUsetId;
@@ -27,6 +17,14 @@ import android.os.Message;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.android.Facebook;
+import com.facebook.model.GraphUser;
 
 
 
@@ -73,7 +71,6 @@ public class SocialNetworkAuth extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
 		setTitle("Enter by social network:");
 		setContentView(R.layout.social_network_auth);
 		
@@ -81,7 +78,7 @@ public class SocialNetworkAuth extends Activity {
 		SocialNetwork=intent.getStringExtra(Settings.NAME_OF_SOCIAL_NETWORK);
 		webview=(WebView)findViewById(id.webBr_for_social);
 		pb=new ProgressDialog(this);
-		act=SocialNetworkAuth.this;
+		act=this;
 		Log.d(Settings.MY_TAG, "socNet name:"+SocialNetwork);
 		
 		if(SocialNetwork.equalsIgnoreCase("_VK")){
@@ -137,8 +134,9 @@ public class SocialNetworkAuth extends Activity {
 							@Override
 							public void call(Session session, SessionState state, Exception exception) {
 								// TODO Auto-generated method stub
-								Log.d(Settings.MY_TAG, "call");
+								
 								if(session.isOpened()){
+									Log.d(Settings.MY_TAG, "call");
 									Request.newMeRequest(session, new Request.GraphUserCallback() {
 										
 										@Override
@@ -146,20 +144,26 @@ public class SocialNetworkAuth extends Activity {
 											// TODO Auto-generated method stub
 											if(user!=null){
 												Log.d(Settings.MY_TAG, "Name: "+user.getName());
-												FBConnect.setUser(user);
+												FB.setFullName(user.getName());
+												FB.setUserId(user.getId());
+												SysSinglton.getInstance().createUser(new FB());
+												finishActivitySocialNetworkAuth();
 											}
 											else{
 												Log.d(Settings.MY_TAG, "user is null");
 											}
 											
+											
 										}
 									}).executeAsync();
+									session.closeAndClearTokenInformation();
 								}
 								
 							}
 						});
 			}
 		}
+	
 	/*public void saveUserId(String id){
 		SharedPreferences shrId=getSharedPreferences(Settings.SHARERD_FILE_KEY, MODE_PRIVATE);;
 		Editor ed=shrId.edit();
@@ -172,9 +176,15 @@ public class SocialNetworkAuth extends Activity {
 		return id;
 	}*/
 	public static void finishActivitySocialNetworkAuth(){
-		Intent intent=new Intent();
-		intent.putExtra("get_id", Settings.STATUS_SUCCESS);
-		act.setResult(RESULT_OK,intent);
-		act.finish();
+			Intent intent=new Intent();
+			intent.putExtra("get_id", Settings.STATUS_SUCCESS);
+			act.setResult(RESULT_OK,intent);
+			act.finish();
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		 Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
 	}
 }

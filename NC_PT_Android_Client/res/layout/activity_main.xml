@@ -8,26 +8,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/entryByVk"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="@string/entry_by_vk" />
+
+        <com.facebook.widget.LoginButton
+            android:id="@+id/entryByFb"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="26sp"
         android:text="@string/welcome_tv"/>
-    <LinearLayout 
-        android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:orientation="horizontal">
-    	<Button 
-    	    android:id="@+id/entryByVk"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:layout_weight="1"
-    	    android:text="@string/entry_by_vk"/>
-    	<Button 
-    	    android:id="@+id/entryByFb"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:layout_weight="1"
-    	    android:text="@string/entry_by_fb"/>
-    </LinearLayout>
 </LinearLayout>
