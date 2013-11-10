@@ -1,20 +1,18 @@
 package ru.ododo.activities;
 
-import ru.ododo.logic.SystemState.SysSinglton;
+import ru.ododo.logic.Settings;
+import ru.ododo.logic.systemstate.SysSinglton;
 import nc_project_team.nc_prototypeinterface.R;
-import nc_project_team.nc_prototypeinterface.R.id;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class LoadOrCreateRoute extends Activity implements OnClickListener {
+public class LoadOrCreateRoute extends Activity {
 
-	Button btnLoadRoute;
-	Button btnNewRoute;
+
 	String userId;
 	String APIUrl;
 	
@@ -31,28 +29,24 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.load_or_create_new_route);
 		setTitle("Hello, "+SysSinglton.getInstance().getUserFullName());
-		
+		TextView tvHello=(TextView)findViewById(R.id.tvHello);
+		tvHello.setText("Success!");
+		Log.d(Settings.MY_TAG, "title:"+SysSinglton.getInstance().getUserFullName());
+		if(SysSinglton.getInstance().getUserFullName()==null){
+			Toast.makeText(this, "Network Error! Try again!", Toast.LENGTH_LONG).show();
+			finish();
+		}
+		else{
+			if(MainActivity.getActiv()!=null)
+				MainActivity.getActiv().finish();
+			if(EnterByVk.getAct()!=null)
+				EnterByVk.getAct().finish();
+		}
 		//mySelfRef=LoadOrCreateRoute.this;
 		
-		btnLoadRoute=(Button)findViewById(id.LoadRoute);
-		btnNewRoute=(Button)findViewById(id.NewRoute);
-		
-		btnLoadRoute.setOnClickListener(this);
-		btnNewRoute.setOnClickListener(this);
+
 	}
 
-	@Override
-	public void onClick(View v) {
-		Intent intent=null;
-		int id = v.getId();
-		if (id == R.id.LoadRoute) {
-			//go to list of routes
-			intent=new Intent(this,ListOfRoutes.class);
-		} else if (id == R.id.NewRoute) {
-			intent=new Intent(this, NameOfNewRoute.class);
-		}
-		startActivity(intent);
-		
-	}
+
 
 }

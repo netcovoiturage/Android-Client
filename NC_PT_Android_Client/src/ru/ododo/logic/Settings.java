@@ -8,7 +8,7 @@ public class Settings {
 	//redirect to site
 	public final static String VK_REDIRECT_URL="edirect_uri=https://oauth.vk.com/blank.htm&";
 	//access application setting 
-	public final static String VK_SCOPE="scope=offline&";
+	public final static String VK_SCOPE="scope=offline&revoke=1&";
 	//type of our display
 	public final static String VK_DISPLAY="display=mobile&";
 	//type of response from server

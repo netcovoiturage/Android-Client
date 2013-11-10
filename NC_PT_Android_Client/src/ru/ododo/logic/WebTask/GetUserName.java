@@ -5,10 +5,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import ru.ododo.activities.SocialNetworkAuth;
+import ru.ododo.activities.EnterByVk;
 import ru.ododo.logic.ParsingObject;
 import ru.ododo.logic.Settings;
-import ru.ododo.logic.SystemState.SysSinglton;
+import ru.ododo.logic.SocNetAbstractFactory.VK;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -26,8 +26,9 @@ public class GetUserName extends AsyncTask<Void, Void, String> {
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
-		pb=SocialNetworkAuth.getPb();
-		pb.setTitle("Get user name");
+		Log.d(Settings.MY_TAG, "onPreVK");
+		pb=EnterByVk.getPb();
+		pb.setTitle("Loading");
 		pb.show();
 	}
 	
@@ -35,7 +36,7 @@ public class GetUserName extends AsyncTask<Void, Void, String> {
 	protected String doInBackground(Void... params) {
 		// TODO Auto-generated method stub
 		
-		String userId=SysSinglton.getInstance().getUserId();
+		String userId=VK.getUserID();
 		
 		APIUrl=Settings.VK_API_ADDRESS+Settings.VK_API_METHOD_NAME+
 				Settings.VK_API_USER_ID+userId+Settings.VK_API_LANG;
@@ -64,7 +65,7 @@ public class GetUserName extends AsyncTask<Void, Void, String> {
          
             // Append Server Response To Content String
             jsonStr = sb.toString();
-            Log.d(Settings.MY_TAG, "JSON: "+jsonStr);
+            Log.d(Settings.MY_TAG, "JSON:"+jsonStr);
             fullUserName=ParsingObject.getFirstLastName(jsonStr);
             
 		} catch (Exception ex) {
@@ -89,8 +90,9 @@ public class GetUserName extends AsyncTask<Void, Void, String> {
 	protected void onPostExecute(String result) {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
+		Log.d(Settings.MY_TAG, "onPostVK");
 		pb.cancel();
-		SocialNetworkAuth.finishActivitySocialNetworkAuth();
+		EnterByVk.getAct().startNewActivity();
 	}
 
 	

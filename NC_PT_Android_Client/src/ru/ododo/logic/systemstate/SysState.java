@@ -1,9 +1,10 @@
-package ru.ododo.logic.SystemState;
+package ru.ododo.logic.systemstate;
 
 
 import android.app.Application;
 
 public class SysState extends Application {
+
 
 	@Override
 	public void onCreate() {
@@ -12,5 +13,5 @@ public class SysState extends Application {
 		SysSinglton.initSinglton();
 		
 	}
-	
+    
 }

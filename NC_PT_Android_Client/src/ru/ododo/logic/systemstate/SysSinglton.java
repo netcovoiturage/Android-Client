@@ -1,4 +1,4 @@
-package ru.ododo.logic.SystemState;
+package ru.ododo.logic.systemstate;
 
 import ru.ododo.logic.SocNetAbstractFactory.AbstractFactory;
 public class SysSinglton {
@@ -16,18 +16,15 @@ public class SysSinglton {
 			singlton=new SysSinglton();
 		}
 	}
-	
 	public static SysSinglton getInstance(){
 		return singlton;
 	}
 	
 	public void createUser(AbstractFactory factory){
-		if(userFullName==null&&userId==null){
-			userId=factory.create().getUserId();
-			userFullName=factory.create().getUserFullName();
-		}
+		
+		userId=factory.create().getUserId();
+		userFullName=factory.create().getUserFullName();
 	}
-	
 	public String getUserId() {
 		return userId;
 	}
