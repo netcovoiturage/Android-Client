@@ -28,7 +28,7 @@ public class GetUserName extends AsyncTask<Void, Void, String> {
 		super.onPreExecute();
 		Log.d(Settings.MY_TAG, "onPreVK");
 		pb=EnterByVk.getPb();
-		pb.setTitle("Loading");
+		pb.setMessage("Loading");
 		pb.show();
 	}
 	
