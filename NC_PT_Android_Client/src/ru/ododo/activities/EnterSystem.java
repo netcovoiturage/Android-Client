@@ -2,7 +2,7 @@ package ru.ododo.activities;
 
 import nc_project_team.nc_prototypeinterface.R;
 import nc_project_team.nc_prototypeinterface.R.id;
-import ru.ododo.logic.Settings;
+import ru.ododo.logic.Variables;
 import ru.ododo.logic.SocNetAbstractFactory.AbstractFactory;
 import ru.ododo.logic.SocNetAbstractFactory.FB;
 import ru.ododo.logic.systemstate.SysSinglton;
@@ -19,7 +19,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.model.GraphUser;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class EnterSystem extends Activity implements OnClickListener {
 
 
 
@@ -27,23 +27,23 @@ public class MainActivity extends Activity implements OnClickListener {
 	Button entryByFb;
 	Intent intent;
 	AbstractFactory userFactory=null;
-	private static MainActivity activ;
+	private static EnterSystem activ;
 
 		
-	public static MainActivity getActiv() {
+	public static EnterSystem getActiv() {
 		return activ;
 	}
 
 
-	public static void setActiv(MainActivity activ) {
-		MainActivity.activ = activ;
+	public static void setActiv(EnterSystem activ) {
+		EnterSystem.activ = activ;
 	}
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.enter_system);
 		setTitle(R.string.name_reg_activity);
 		
 		activ=this;
@@ -93,7 +93,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					});
 		} else if (id == R.id.entryByVk) {
 			intent=new Intent(this, EnterByVk.class);
-			intent.putExtra(Settings.NAME_OF_SOCIAL_NETWORK, "_VK");
+			intent.putExtra(Variables.NAME_OF_SOCIAL_NETWORK, "_VK");
 			startActivity(intent);
 		}
 	}

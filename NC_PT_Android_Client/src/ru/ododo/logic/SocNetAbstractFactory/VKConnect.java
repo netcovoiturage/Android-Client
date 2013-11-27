@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutionException;
 
 import android.util.Log;
 
-import ru.ododo.logic.Settings;
+import ru.ododo.logic.Variables;
 import ru.ododo.logic.WebTask.GetUserName;
 
 public class VKConnect extends AbstractProductSocNetConnect {
@@ -32,7 +32,7 @@ public class VKConnect extends AbstractProductSocNetConnect {
 			e.printStackTrace();
 		}
 		VK.setUserID("");
-		Log.d(Settings.MY_TAG, "UserID has cleared");
+		Log.d(Variables.MY_TAG, "UserID has cleared");
 		return result;
 	}
 	

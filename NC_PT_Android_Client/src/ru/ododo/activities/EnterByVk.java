@@ -3,7 +3,7 @@ package ru.ododo.activities;
 import nc_project_team.nc_prototypeinterface.R;
 import nc_project_team.nc_prototypeinterface.R.id;
 import ru.ododo.logic.ParsingObject;
-import ru.ododo.logic.Settings;
+import ru.ododo.logic.Variables;
 import ru.ododo.logic.SocNetAbstractFactory.VK;
 import ru.ododo.logic.systemstate.SysSinglton;
 import android.annotation.SuppressLint;
@@ -67,14 +67,14 @@ public class EnterByVk extends Activity {
 		setContentView(R.layout.social_network_auth);
 		
 		intent=getIntent();
-		SocialNetwork=intent.getStringExtra(Settings.NAME_OF_SOCIAL_NETWORK);
+		SocialNetwork=intent.getStringExtra(Variables.NAME_OF_SOCIAL_NETWORK);
 		webview=(WebView)findViewById(id.webBr_for_social);
 		pb=new ProgressDialog(this);
 		act=this;
-		Log.d(Settings.MY_TAG, "socNet name:"+SocialNetwork);
+		Log.d(Variables.MY_TAG, "socNet name:"+SocialNetwork);
 		
-			String url=Settings.VK_AUTH_URL+Settings.VK_CLINT_ID+Settings.VK_REDIRECT_URL+Settings.VK_SCOPE+
-	        		Settings.VK_DISPLAY+Settings.VK_RESPONSE_TYPE;
+			String url=Variables.VK_AUTH_URL+Variables.VK_CLINT_ID+Variables.VK_REDIRECT_URL+Variables.VK_SCOPE+
+	        		Variables.VK_DISPLAY+Variables.VK_RESPONSE_TYPE;
 			
 			webview.setVerticalScrollBarEnabled(false);
 			webview.setHorizontalScrollBarEnabled(false);
@@ -107,7 +107,7 @@ public class EnterByVk extends Activity {
 									String url) {
 								// TODO Auto-generated method stub
 								if(url.contains("access_token")){
-									Log.d(Settings.MY_TAG, "URL:"+url);
+									Log.d(Variables.MY_TAG, "URL:"+url);
 									VK.setUserID(ParsingObject.getVkUserId(url));
 									urlWithAccessToken=url;
 									SysSinglton.getInstance().createUser(new VK());
@@ -130,14 +130,14 @@ public class EnterByVk extends Activity {
 					
 				});
 					thForHandl.start();	
-					Log.d(Settings.MY_TAG, "Start URL:"+url);
+					Log.d(Variables.MY_TAG, "Start URL:"+url);
 					webview.loadUrl(url);
 					
 
 			
 		}
 	public void startNewActivity(){
-		Log.d(Settings.MY_TAG, "startNewActivAfterWeGetName");
+		Log.d(Variables.MY_TAG, "startNewActivAfterWeGetName");
 		this.setVisible(false);
 		Intent intent=new Intent(this, LoadOrCreateRoute.class);
 		startActivity(intent);

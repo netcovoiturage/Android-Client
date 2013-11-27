@@ -17,12 +17,12 @@ public class ParsingObject {
 		String [] resArr=null;
 		try {
 			JSONObject jsonObj=new JSONObject(jsonStr);
-			JSONArray person=jsonObj.getJSONArray(Settings.TAG_RESPONSE);
+			JSONArray person=jsonObj.getJSONArray(Variables.TAG_RESPONSE);
 			resArr=new String[2];
 			for(int i=0;i<person.length();i++){
 				JSONObject node=person.getJSONObject(i);
-				resArr[0]=node.getString(Settings.TAG_FIRST_NAME);
-				resArr[1]=node.getString(Settings.TAG_LAST_NAME);
+				resArr[0]=node.getString(Variables.TAG_FIRST_NAME);
+				resArr[1]=node.getString(Variables.TAG_LAST_NAME);
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

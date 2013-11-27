@@ -1,6 +1,6 @@
 package ru.ododo.logic.SocNetAbstractFactory;
 
-import ru.ododo.logic.Settings;
+import ru.ododo.logic.Variables;
 import android.util.Log;
 
 
@@ -13,7 +13,7 @@ public class FBConnect extends AbstractProductSocNetConnect{
 	@Override
 	public String getUserId() {
 		// TODO Auto-generated method stub
-		Log.d(Settings.MY_TAG, "UserID:"+FB.getUserId());
+		Log.d(Variables.MY_TAG, "UserID:"+FB.getUserId());
 		return FB.getUserId();
 	}
 

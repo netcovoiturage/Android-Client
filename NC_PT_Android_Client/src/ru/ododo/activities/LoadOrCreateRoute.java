@@ -1,10 +1,12 @@
 package ru.ododo.activities;
 
-import ru.ododo.logic.Settings;
+import ru.ododo.logic.Variables;
+import ru.ododo.logic.androidService;
 import ru.ododo.logic.systemstate.SysSinglton;
 import nc_project_team.nc_prototypeinterface.R;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -31,20 +33,18 @@ public class LoadOrCreateRoute extends Activity {
 		setTitle("Hello, "+SysSinglton.getInstance().getUserFullName());
 		TextView tvHello=(TextView)findViewById(R.id.tvHello);
 		tvHello.setText("Success!");
-		Log.d(Settings.MY_TAG, "title:"+SysSinglton.getInstance().getUserFullName());
+		Log.d(Variables.MY_TAG, "title:"+SysSinglton.getInstance().getUserFullName());
 		if(SysSinglton.getInstance().getUserFullName()==null){
 			Toast.makeText(this, "Network Error! Try again!", Toast.LENGTH_LONG).show();
 			finish();
 		}
 		else{
-			if(MainActivity.getActiv()!=null)
-				MainActivity.getActiv().finish();
+			if(EnterSystem.getActiv()!=null)
+				EnterSystem.getActiv().finish();
 			if(EnterByVk.getAct()!=null)
 				EnterByVk.getAct().finish();
+			startService(new Intent(this, androidService.class));
 		}
-		//mySelfRef=LoadOrCreateRoute.this;
-		
-
 	}
 
 
