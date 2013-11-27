@@ -25,6 +25,7 @@ public class EnterSystem extends Activity implements OnClickListener {
 
 	Button entryByVk;
 	Button entryByFb;
+	Button entryWithoutInt;
 	Intent intent;
 	AbstractFactory userFactory=null;
 	private static EnterSystem activ;
@@ -50,10 +51,11 @@ public class EnterSystem extends Activity implements OnClickListener {
 		
 		entryByFb=(Button)findViewById(id.entryByFb);
 		entryByVk=(Button)findViewById(id.entryByVk);
+		entryWithoutInt=(Button)findViewById(id.entryWithoutInt);
 		
 		entryByFb.setOnClickListener(this);
 		entryByVk.setOnClickListener(this);	
-		
+		entryWithoutInt.setOnClickListener(this);
 	}
 
 
@@ -91,11 +93,21 @@ public class EnterSystem extends Activity implements OnClickListener {
 							
 						}
 					});
-		} else if (id == R.id.entryByVk) {
-			intent=new Intent(this, EnterByVk.class);
-			intent.putExtra(Variables.NAME_OF_SOCIAL_NETWORK, "_VK");
-			startActivity(intent);
+		} else if (id == R.id.entryByVk){
+				intent=new Intent(this, EnterByVk.class);
+				intent.putExtra(Variables.NAME_OF_SOCIAL_NETWORK, "_VK");
+				startActivity(intent);
 		}
+		 else if(id==R.id.entryWithoutInt){
+				FB.setUserId("100500");
+				FB.setFullName("Andrey Krasnov");
+				userFactory=new FB();
+				SysSinglton.getInstance().createUser(userFactory);
+				intent=new Intent(this, LoadOrCreateRoute.class);
+				startActivity(intent);
+		}
+		
+
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

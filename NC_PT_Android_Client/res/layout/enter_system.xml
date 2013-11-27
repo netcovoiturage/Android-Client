@@ -24,6 +24,12 @@
             android:id="@+id/entryByFb"
             android:layout_width="280dp"
             android:layout_height="wrap_content" />
+        
+        <Button
+            android:id="@+id/entryWithoutInt"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_without_internet" />
 
     </LinearLayout>
 
