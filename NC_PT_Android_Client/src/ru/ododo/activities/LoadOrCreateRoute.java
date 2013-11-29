@@ -1,9 +1,10 @@
 package ru.ododo.activities;
 
-import ru.ododo.logic.Variables;
-import ru.ododo.logic.BackgroundWorkService;
-import ru.ododo.logic.systemstate.SysSinglton;
 import nc_project_team.nc_prototypeinterface.R;
+import ru.ododo.logic.BackgroundWorkService;
+import ru.ododo.logic.GPSTracker;
+import ru.ododo.logic.Variables;
+import ru.ododo.logic.systemstate.SysSinglton;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -21,7 +22,11 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 	String userId;
 	String APIUrl;
 	Button btnShutDownService;
+	Button btnShowMyLocation;
+	Button btnMap;
 	boolean stopService;
+	// GPSTracker class
+    GPSTracker gps;
 	
 	private static ProgressDialog pb;
 	//private static LoadOrCreateRoute mySelfRef;
@@ -39,6 +44,12 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 		
 		btnShutDownService=(Button)findViewById(R.id.shutDownService);
 		btnShutDownService.setOnClickListener(this);
+		
+		btnShowMyLocation=(Button)findViewById(R.id.myLocation);
+		btnShowMyLocation.setOnClickListener(this);
+		
+		findViewById(R.id.btnMap).setOnClickListener(this);
+		
 		
 		TextView tvHello=(TextView)findViewById(R.id.tvHello);
 		tvHello.setText("Success!");
@@ -59,11 +70,38 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if(v.getId()==btnShutDownService.getId()){
+		switch (v.getId()) {
+		case R.id.shutDownService:
 			stopService=true;
 			finish();
+			break;
+		case R.id.myLocation:
+			// create class object
+            gps = new GPSTracker(this);
+
+            // check if GPS enabled    
+            if(gps.canGetLocation()){
+                 
+                double latitude = gps.getLatitude();
+                double longitude = gps.getLongitude();
+                
+                SysSinglton.getInstance().setLatitude(latitude);
+                SysSinglton.getInstance().setLongitude(longitude);
+                
+                TextView coordinates=(TextView)findViewById(R.id.tvHello);
+                coordinates.setText("Your Location is - \nLat: "
+                		+ latitude + "\nLong: " + longitude);
+            }else{
+                // can't get location
+                // GPS or Network is not enabled
+                // Ask user to enable GPS/network in settings
+                gps.showSettingsAlert();
+            }
+			break;
+			case R.id.btnMap:
+				startActivity(new Intent(this, Map.class));
+			break;
 		}
-		
 	}
 
 	@Override

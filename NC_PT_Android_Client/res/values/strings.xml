@@ -22,5 +22,7 @@
 	<string name="loading">loading</string>
 	<string name="error">error</string>
 	<string name="btn_without_internet">enter without internet</string>
-	<string name="btn_shut_down_service">shut down service</string>
+	<string name="btn_shut_down_service">close application</string>
+	<string name="btn_my_location">show my location</string>
+	<string name="btn_map">map</string>
 </resources>
