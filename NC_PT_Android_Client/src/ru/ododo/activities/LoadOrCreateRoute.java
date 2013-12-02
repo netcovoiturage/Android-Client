@@ -63,7 +63,7 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 				EnterSystem.getActiv().finish();
 			if(EnterByVk.getAct()!=null)
 				EnterByVk.getAct().finish();
-			startService(new Intent(this, BackgroundWorkService.class));
+			//startService(new Intent(this, BackgroundWorkService.class));
 		}
 	}
 
