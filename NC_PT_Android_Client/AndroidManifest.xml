@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme" 
         android:name="ru.ododo.logic.systemstate.SysState">
         <activity
-            android:name="ru.ododo.activities.EnterSystem"
+            android:name="ru.ododo.activities.EnterToSystem"
             android:label="@string/name_reg_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
         </activity>
 
         <activity android:name="ru.ododo.activities.EnterByVk"></activity>
-        <activity android:name="ru.ododo.activities.LoadOrCreateRoute"></activity>
+        <activity android:name="ru.ododo.activities.MainMenu"></activity>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
         <activity android:name="com.facebook.LoginActivity" android:label="@string/app_name"></activity>
         <service android:name="ru.ododo.logic.BackgroundWorkService" android:process=":serviceproc"></service>

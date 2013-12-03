@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoadOrCreateRoute extends Activity implements OnClickListener {
+public class MainMenu extends Activity implements OnClickListener {
 
 
 	String userId;
@@ -25,6 +25,7 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 	Button btnShowMyLocation;
 	Button btnMap;
 	boolean stopService;
+	TextView coordinates;
 	// GPSTracker class
     GPSTracker gps;
 	
@@ -39,8 +40,13 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.load_or_create_new_route);
+		setContentView(R.layout.main_menu);
 		setTitle("Hello, "+SysSinglton.getInstance().getUserFullName());
+		
+		if(SysSinglton.getInstance().isServiceRun()){
+			stopService(new Intent(this, BackgroundWorkService.class));
+			SysSinglton.getInstance().setServiceRun(false);
+		}
 		
 		btnShutDownService=(Button)findViewById(R.id.shutDownService);
 		btnShutDownService.setOnClickListener(this);
@@ -51,19 +57,19 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 		findViewById(R.id.btnMap).setOnClickListener(this);
 		
 		
-		TextView tvHello=(TextView)findViewById(R.id.tvHello);
-		tvHello.setText("Success!");
+		coordinates=(TextView)findViewById(R.id.tvHello);
+		 coordinates.setText("Your Location is - \nLat: "
+         		+ SysSinglton.getInstance().getLatitude() + "\nLong: " + SysSinglton.getInstance().getLongitude());
 		Log.d(Variables.MY_TAG, "title:"+SysSinglton.getInstance().getUserFullName());
 		if(SysSinglton.getInstance().getUserFullName()==null){
 			Toast.makeText(this, "Network Error! Try again!", Toast.LENGTH_LONG).show();
 			finish();
 		}
 		else{
-			if(EnterSystem.getActiv()!=null)
-				EnterSystem.getActiv().finish();
+			if(EnterToSystem.getActiv()!=null)
+				EnterToSystem.getActiv().finish();
 			if(EnterByVk.getAct()!=null)
 				EnterByVk.getAct().finish();
-			//startService(new Intent(this, BackgroundWorkService.class));
 		}
 	}
 
@@ -88,7 +94,7 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
                 SysSinglton.getInstance().setLatitude(latitude);
                 SysSinglton.getInstance().setLongitude(longitude);
                 
-                TextView coordinates=(TextView)findViewById(R.id.tvHello);
+                
                 coordinates.setText("Your Location is - \nLat: "
                 		+ latitude + "\nLong: " + longitude);
             }else{
@@ -108,10 +114,14 @@ public class LoadOrCreateRoute extends Activity implements OnClickListener {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		if(stopService)
+		if(stopService){
 			stopService(new Intent(this, BackgroundWorkService.class));
+			SysSinglton.getInstance().setServiceRun(false);
+		}
+		else{
+			startService(new Intent(this, BackgroundWorkService.class));
+			SysSinglton.getInstance().setServiceRun(true);
+		}
 	}
-
-
 
 }

@@ -9,11 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-	<Button
-            android:id="@+id/shutDownService"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_shut_down_service" />
+	
 	<Button
             android:id="@+id/myLocation"
             android:layout_width="280dp"
@@ -24,4 +20,9 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_map" />
+	<Button
+            android:id="@+id/shutDownService"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_shut_down_service" />
 </LinearLayout>

@@ -8,8 +8,18 @@ public class SysSinglton {
 	private String userId=null;
 	private String userFullName=null;
 	
-	private double latitude = 0;
-    public double getLatitude() {
+	private double latitude = 53.21701;
+	private double longitude = 50.22159;
+	
+	private boolean isServiceRun;
+	
+    public boolean isServiceRun() {
+		return isServiceRun;
+	}
+	public void setServiceRun(boolean isServiceRun) {
+		this.isServiceRun = isServiceRun;
+	}
+	public double getLatitude() {
 		return latitude;
 	}
 	public void setLatitude(double latitude) {
@@ -21,7 +31,7 @@ public class SysSinglton {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	private double longitude = 0;
+	
 	
 	private SysSinglton(){
 		

@@ -4,7 +4,7 @@ package ru.ododo.logic;
 
 
 
-import ru.ododo.activities.LoadOrCreateRoute;
+import ru.ododo.activities.MainMenu;
 import android.R;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -32,13 +32,13 @@ public class BackgroundWorkService extends Service {
 		// TODO Auto-generated method stub
 		Log.d(Variables.MY_TAG, "Service start command");
 		
-		Intent activityIntent=new Intent(this, LoadOrCreateRoute.class);
+		Intent activityIntent=new Intent(this, MainMenu.class);
 		PendingIntent pIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
 		
 		Notification toStatusBar=new NotificationCompat.Builder(this)
-									.setContentText("ODODO.RU")
+									.setContentText("HELLO")
 									.setContentIntent(pIntent)
-									.setContentText("wait responce from server")
+									.setContentText("ododo.ru")
 									.setSmallIcon(R.drawable.ic_menu_compass)
 									.setOngoing(true)
 									.build();

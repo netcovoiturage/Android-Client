@@ -139,7 +139,7 @@ public class EnterByVk extends Activity {
 	public void startNewActivity(){
 		Log.d(Variables.MY_TAG, "startNewActivAfterWeGetName");
 		this.setVisible(false);
-		Intent intent=new Intent(this, LoadOrCreateRoute.class);
+		Intent intent=new Intent(this, MainMenu.class);
 		startActivity(intent);
 	}
 }

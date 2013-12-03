@@ -19,7 +19,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.model.GraphUser;
 
-public class EnterSystem extends Activity implements OnClickListener {
+public class EnterToSystem extends Activity implements OnClickListener {
 
 
 
@@ -28,16 +28,15 @@ public class EnterSystem extends Activity implements OnClickListener {
 	Button entryWithoutInt;
 	Intent intent;
 	AbstractFactory userFactory=null;
-	private static EnterSystem activ;
+	private static EnterToSystem activ;
 
-		
-	public static EnterSystem getActiv() {
+	public static EnterToSystem getActiv() {
 		return activ;
 	}
 
 
-	public static void setActiv(EnterSystem activ) {
-		EnterSystem.activ = activ;
+	public static void setActiv(EnterToSystem activ) {
+		EnterToSystem.activ = activ;
 	}
 
 
@@ -56,6 +55,8 @@ public class EnterSystem extends Activity implements OnClickListener {
 		entryByFb.setOnClickListener(this);
 		entryByVk.setOnClickListener(this);	
 		entryWithoutInt.setOnClickListener(this);
+		
+		
 	}
 
 
@@ -65,7 +66,7 @@ public class EnterSystem extends Activity implements OnClickListener {
 		
 		int id = v.getId();
 		if (id == R.id.entryByFb) {
-			Session.openActiveSession(this, 
+		Session.openActiveSession(this, 
 					true, new Session.StatusCallback() {
 						
 						@Override
@@ -103,7 +104,7 @@ public class EnterSystem extends Activity implements OnClickListener {
 				FB.setFullName("Andrey Krasnov");
 				userFactory=new FB();
 				SysSinglton.getInstance().createUser(userFactory);
-				intent=new Intent(this, LoadOrCreateRoute.class);
+				intent=new Intent(this, MainMenu.class);
 				startActivity(intent);
 		}
 		
@@ -120,7 +121,7 @@ public class EnterSystem extends Activity implements OnClickListener {
 	}
 	public void startNewActivety(){
 		this.setVisible(false);
-		Intent intent=new Intent(this, LoadOrCreateRoute.class);
+		Intent intent=new Intent(this, MainMenu.class);
 		startActivity(intent);
 	}
 }

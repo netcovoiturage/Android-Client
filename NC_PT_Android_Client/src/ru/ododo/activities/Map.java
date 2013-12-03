@@ -20,25 +20,30 @@ public class Map extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.map);
-		//setTitle("Map");
+		setTitle("Map");
 		MapView mapView = new MapView(this, 256); //constructor
-
         mapView.setClickable(true);
 
         mapView.setBuiltInZoomControls(true);
 
         setContentView(mapView); //displaying the MapView
 
+        mapView.setUseDataConnection(true);
+        
         mapView.getController().setZoom(15); //set initial zoom-level, depends on your need
 
         mapView.getController().setCenter(new GeoPoint(SysSinglton.getInstance().getLatitude(), 
-        		SysSinglton.getInstance().getLongitude())); 
-
-        mapView.setUseDataConnection(false);
+        		SysSinglton.getInstance().getLongitude()));
+       
         
 		
 	}
 
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
+	}
 	
-
 }
