@@ -45,8 +45,13 @@ public class EnterToSystem extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enter_system);
 		setTitle(R.string.name_reg_activity);
-		
+
 		activ=this;
+		
+
+		if(SysSinglton.getInstance().isServiceRun()){
+			startActivity(new Intent(this, MainMenu.class));
+		}
 		
 		entryByFb=(Button)findViewById(id.entryByFb);
 		entryByVk=(Button)findViewById(id.entryByVk);
