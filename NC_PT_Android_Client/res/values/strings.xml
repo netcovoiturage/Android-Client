@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="app_id">213931805444840</string>
     <string name="app_name">NC_PrototypeInterface</string>
     <string name="action_settings">Settings</string>
     
-    <string name="name_reg_activity">Регистрация</string>
-    <string name="welcome_tv">Войти через:</string>
-    <string name="entry_by_vk">вконтакте</string>
-    <string name="entry_by_fb">facebook</string>
-    <string name="load_route">сохраненные маршруты</string>
-    <string name="new_route">проложить маршрут</string>
-    <string name="name_routes">Загрузить или создать маршрут</string>
-    <string name="name_of_new_route">Название нового маршрута:</string>
+    <string name="name_reg_activity">Registration</string>
+    <string name="welcome_tv">Enter by:</string>
+    <string name="entry_by_vk">Log in with VK</string>
+    <string name="load_route">save routes</string>
+    <string name="new_route">create route</string>
+    <string name="name_of_new_route">the name of new route:</string>
 	<string name="ok">OK</string>
-	<string name="abort">отмена</string>
-	<string name="btn_my_cord">определить мои координаты</string>
-	<string name="tv_start">пункт отправки:</string>
-	<string name="tv_destination">пункт назначения:</string>
-	<string name="rb_user_passenger">я-пассажир</string>
-	<string name="rb_user_driver">я-водитель</string>
-	<string name="menu_edit_list">редактировать\nмаршрут</string>
-	<string name="menu_delete_list">удалить\nмаршрут</string>
-	<string-array name="routes">
-	    <item >работа</item>
-	    <item >универ</item>
-	    <item >магазин</item>
-	</string-array>
+	<string name="abort">abort</string>
+	<string name="btn_my_cord">find out my coordinates</string>
+	<string name="tv_start">departure:</string>
+	<string name="tv_destination">destination:</string>
+	<string name="rb_user_passenger">passenger</string>
+	<string name="rb_user_driver">driver</string>
+	<string name="menu_edit_list">edit\nroute</string>
+	<string name="menu_delete_list">delete\nroute</string>
+	<string name="loading">loading</string>
+	<string name="error">error</string>
+	<string name="btn_without_internet">enter without internet</string>
+	<string name="btn_shut_down_service">close application</string>
+	<string name="btn_my_location">show my location</string>
+	<string name="btn_map">map</string>
 </resources>
